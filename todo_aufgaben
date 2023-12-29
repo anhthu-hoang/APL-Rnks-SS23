@@ -1,0 +1,50 @@
+/*ToDo's Aufgabenstellung
+* Empfänger:
+* [x] Soll Daten senden können
+* [x] Soll Daten empfangen können
+* [x] Soll argv für sNummer des Senders erhalten können
+* [x] Soll argv für Port erhalten können
+* [x] Soll sNummer überprüfen können
+* [x] Initialisieren des Empfänger TCP-Sockets möglich
+* [x] bind() verwenden
+* [x] Aufruf von select()
+* [x] Rückgabewert von select() prüfen
+* [x] Einlesen von Text via Konsole
+* [x] Paket erstellen (in diesem Fall nur Nachricht da keine s-Num für Empfänger gefordert war)
+* [x] Nachricht maximal 1024 Zeichen -> 1023 lesbare + 1 '\0' Zeichen gegeben.
+* [x] Empfangen von Text via recv()
+* [x] Ausgabe der sNummer + Text in der Konsole
+* [x] Keine weiteren Threads
+* [x] Asynchrones Eingeben & Empfangen
+*
+* Sender:
+* [x] Soll Daten senden können
+* [x] Soll Daten empfangen können
+* [x] Soll argv für sNummer erhalten können
+* [x] Soll argv für IPv6 Addresse des Servers erhalten können
+* [x] Soll argv für Port erhalten können
+* [x] Initialisieren des Sender TCP-Sockets möglich
+* [x] Aufruf von select()
+* [x] Rückgabewert von select() prüfen
+* [x] Einlesen von Text via Konsole
+* [x] Paket erstellen
+* [x] Nachricht maximal 1024 Zeichen -> 1023 lesbare + 1 '\0' Zeichen gegeben.
+* [x] Empfangen von Text via recv()
+* [x] Ausgabe der sNummer + Text in der Konsole
+* [x] Keine weiteren Threads
+* [x] Asynchrones Eingeben & Empfangen
+*
+* Gesamtbewertung:
+* [x] Parameterübergabe (Empf.: [sNummer v. KP | Port]) & (Sender: [sNummer | IPv6 Addresse | Port])
+* [x] Konnektivität zwischen Empf. und Sender
+* [x] Senden & Empfangen von Nachrichten zwischen Empf. und Sender
+* [x] Paket mit sNummer + Nachricht (nur von Clientseite, weil bei Server nicht gefordert gewesen)
+* [x] in beide Richtungen
+* [?] entfernte Kommunikation (Theoretisch gegeben, vermutlich aber durch Firewall blockiert worden)
+* [?] Arbeit mit nichtblockierenden Socketfunktionen (Ja wenn nur in select()-befindliche Socketfunktionen gemeint sind, sonst blockiert noch accept() und connect()
+* [x] Arbeit mit select()
+* [?] nichtblockierende Konsolen-Anwendung (Ja, sobald die Verbindung erfolgt ist)
+* [x] sauber strukturierter Code (würd ich ja mal meinen)
+* [ ] sauber dokumentierter Code
+* [?] Alle Fragen beantworten können
+*/
