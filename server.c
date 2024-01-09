@@ -6,8 +6,8 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
+//#include <netinet/in.h>
+//#include <netdb.h>
 #include <arpa/inet.h>
 
 
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 
 
     // Socket erstellen
-    int sockfd = socket(AF_INET6, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET6, SOCK_STREAM, 0);
     if(sockfd == -1){
         perror("socket");
         return EXIT_FAILURE;
@@ -39,7 +39,6 @@ int main(int argc, char* argv[])
 
 
     // Empfänger-Addresse vorbereiten
-    struct sockaddr_in6 serv_addr;
     bzero((char*)&serv_addr, sizeof(serv_addr));
     serv_addr.sin6_flowinfo = 0;
     serv_addr.sin6_family = AF_INET6;
