@@ -1,18 +1,14 @@
 // gcc -Wall -o cilent cilent.c
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-
-#include <string.h>
-#include <sys/types.h>
-
-
 
 #include <winsock2.h>   // socket() für MS Windows
 #include <winsock.h>    // connect() fuer MS Windows
 #include <ws2tcpip.h>
 
 #include "packet.h"
+#include <WinSock2.h>
+#define SERVER_IPv6 "fe80::f176:f9a0:71eb:1c46%4"
 
 #define Port_IPv6 50000
 
@@ -79,15 +75,13 @@ int main(int argc, char *argv[])  //argv[1]: IPv6-Adresse, argv[2]: Port, argv[3
     packet myPacket;
     
     while (1) {
-            fd_set read_fds, write_fds;
-
+            fd_set read_fds;
             FD_ZERO(&read_fds); // Alee fds bits wird geloescht, die vorher noch nicht
             FD_SET(STDIN_FILENO, &read_fds);  // Das Standard-Eingabestream-File-Deskriptor (Tastatur)
             FD_SET(sock, &read_fds); // Der Socket-File-Deskriptor für die Verbindung zum Empfänger
 
             // Warten auf Eingabe von Server-Daten
-            eingagbe = select(FD_SETSIZE, &read_fds, &write_fds NULL, NULL, NULL)
-            if ( eingagbe < 0) {
+            if ( select(FD_SETSIZE, &read_fds, NULL, NULL, NULL) < 0) {
                 perror("Fehler bei select()");
                 close(sock);
                 exit(EXIT_FAILURE);
@@ -117,7 +111,7 @@ int main(int argc, char *argv[])  //argv[1]: IPv6-Adresse, argv[2]: Port, argv[3
                 } else {
                     perror("Fehler beim Empfangen von Daten vom Server!");
                 }
-                close(sockfd);
+                close(sock);
                 exit(EXIT_FAILURE);
             }
 
