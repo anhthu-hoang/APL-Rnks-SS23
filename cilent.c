@@ -3,16 +3,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/socket.h>
 
-#include<netinet/in.h>
 
-// #include <winsock2.h>   // socket() für MS Windows
-// #include <winsock.h>    // connect() fuer MS Windows
-// #include <ws2tcpip.h>
+
+#include <winsock2.h>   // socket() für MS Windows
+#include <winsock.h>    // connect() fuer MS Windows
+#include <ws2tcpip.h>
 
 #include "packet.h"
 
