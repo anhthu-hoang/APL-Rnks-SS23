@@ -1,6 +1,12 @@
 // gcc -Wall -o cilent cilent.c
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
 
 #include <winsock2.h>   // socket() für MS Windows
 #include <winsock.h>    // connect() fuer MS Windows
@@ -32,8 +38,8 @@ int main(int argc, char *argv[])  //argv[1]: IPv6-Adresse, argv[2]: Port, argv[3
     // Erzeuge das Socket - Verbindung über TCP/IP
     sock = socket( AF_INET6, SOCK_STREAM, 0 ); 
     if (sock < 0) {
-        printf("Socket wurde nicht erzeugt. \n");
-        exit(EXIT_FAILURE); // Fehler beim Erzeugen des Sockets
+        perror("Socket wurde nicht erzeugt. \n");
+        return -1; // Fehler beim Erzeugen des Sockets
     }
     else  
         printf("Socket wurde ergolgreich erzeugt. \n");
@@ -68,20 +74,21 @@ int main(int argc, char *argv[])  //argv[1]: IPv6-Adresse, argv[2]: Port, argv[3
             exit(EXIT_FAILURE);
         }
     else
-        printf("Connected to Server.....\n");
+        printf("Connected to Server...\n", );
 
 
     packet myPacket;
     
     while (1) {
-            fd_set read_fds;
+            fd_set read_fds, write_fds;
+
             FD_ZERO(&read_fds); // Alee fds bits wird geloescht, die vorher noch nicht
             FD_SET(STDIN_FILENO, &read_fds);  // Das Standard-Eingabestream-File-Deskriptor (Tastatur)
             FD_SET(sock, &read_fds); // Der Socket-File-Deskriptor für die Verbindung zum Empfänger
 
             // Warten auf Eingabe von Server-Daten
-            select(FD_SETSIZE, &read_fds, NULL, NULL, NULL)
-            if (select(sock, &read_fds, NULL, NULL, NULL) < 0) {
+            eingagbe = select(FD_SETSIZE, &read_fds, &write_fds NULL, NULL, NULL)
+            if ( eingagbe < 0) {
                 perror("Fehler bei select()");
                 close(sock);
                 exit(EXIT_FAILURE);
