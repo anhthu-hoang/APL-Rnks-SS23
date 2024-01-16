@@ -8,13 +8,14 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include <winsock2.h>   // socket() für MS Windows
-#include <winsock.h>    // connect() fuer MS Windows
-#include <ws2tcpip.h>
+#include<netinet/in.h>
+
+// #include <winsock2.h>   // socket() für MS Windows
+// #include <winsock.h>    // connect() fuer MS Windows
+// #include <ws2tcpip.h>
 
 #include "packet.h"
 
-#define SERVER_IPv6 "mein_server_IP"
 #define Port_IPv6 50000
 
 int main(int argc, char *argv[])  //argv[1]: IPv6-Adresse, argv[2]: Port, argv[3]: sNummer
