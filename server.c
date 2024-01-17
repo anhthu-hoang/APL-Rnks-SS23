@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     char client_addr_ipv6[100];
     
     if(argc !=3){
-        printf("Usage: <FILE> <PORT> <SNUMMER>\n", argv[0]);
+        printf("Usage: <FILE> <PORT> <SNUMMER>\n");
         return EXIT_FAILURE;
     }
 
