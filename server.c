@@ -6,21 +6,18 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-//#include <netinet/in.h>
-//#include <netdb.h>
 #include <arpa/inet.h>
 
 
 int main(int argc, char* argv[])
 {
     int sockfd, newsockfd;
-    int ret;
     char buffer [1024];
     socklen_t clilen;
     struct sockaddr_in6 serv_addr, cli_addr;
     char client_addr_ipv6[100];
     
-    if(argc !=3){
+    if(argc <2){
         printf("Usage: <FILE> <PORT> <SNUMMER>\n");
         return EXIT_FAILURE;
     }
