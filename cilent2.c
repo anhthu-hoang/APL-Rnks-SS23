@@ -1,5 +1,6 @@
 // gcc -Wall -o client client.c
-// ./client 0:0:0:0:0:ffff:7f00:1 50000 49584
+// ./client 0:0:0:0:0:0000:0000:0 50000 85622
+
 
 #include <stdio.h>
 #include <stdlib.h>
